@@ -96,10 +96,10 @@ class PerformanceMetric(models.Model):
     cash_value = models.DecimalField(max_digits=15, decimal_places=2)
     position_value = models.DecimalField(max_digits=15, decimal_places=2)
     daily_return = models.DecimalField(
-        max_digits=8, decimal_places=6, null=Trade, blank=True
+        max_digits=8, decimal_places=6, null=True, blank=True
     )
     cumulative_return = models.DecimalField(
-        max_digits=8, decimal_places=6, null=Trade, blank=True
+        max_digits=8, decimal_places=6, null=True, blank=True
     )
     total_trades = models.IntegerField(default=0)
     winning_trades = models.IntegerField(default=0)
@@ -107,7 +107,7 @@ class PerformanceMetric(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = "performace_metrics"
+        db_table = "performance_metrics"
         unique_together = ("portfolio", "date")
         ordering = ["-date"]
         indexes = [
